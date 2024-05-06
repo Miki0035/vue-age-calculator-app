@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-lightGrey w-full h-screen flex justify-center items-center">
+  <main class="bg-lightGrey w-full h-screen flex justify-center items-center">
     <div
       class="bg-white absolute top-24 rounded-br-[100px] rounded-t-[20px] rounded-bl-[20px] flex flex-col border border-white items-center mx-2 w-full w-96 sm:w-3/5 lg:w-2/5"
     >
@@ -114,14 +114,22 @@
           days
         </div>
       </div>
+      <div class="text-center text-xs text-purple my-5">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class=" text-offBlack hover:underline">
+          Frontend Mentor.
+        </a>
+        <br class="block md:hidden"> Coded by
+        <a
+          href="https://www.linkedin.com/in/mikiyas-kebede-b661aa225/"
+          target="_blank"
+          class="text-offBlack hover:underline"
+        >
+          Mikiyas Kebede
+        </a>
+      </div>
     </div>
-    <!-- <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div> -->
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
