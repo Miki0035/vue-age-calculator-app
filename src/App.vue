@@ -83,7 +83,7 @@
         >
           <button
             type="submit"
-            class="absolute z-20 bg-purple rounded-full w-14 h-14 flex justify-center hover:bg-offBlack"
+            class="absolute z-20 bg-purple rounded-full w-14 h-14 flex justify-center items-center hover:bg-offBlack"
           >
             <img
               src="/src/assets/images/icon-arrow.svg"
