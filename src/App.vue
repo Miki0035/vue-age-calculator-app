@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-lightGrey w-full h-screen flex justify-center items-center">
+  <article class="bg-lightGrey w-full h-screen flex justify-center items-center">
     <div
       class="bg-white absolute top-24 rounded-br-[100px] rounded-t-[20px] rounded-bl-[20px] flex flex-col border border-white items-center mx-2 w-full w-96 sm:w-3/5 lg:w-2/5"
     >
@@ -129,7 +129,7 @@
         </a>
       </div>
     </div>
-  </main>
+  </article>
 </template>
 
 <script lang="ts">
