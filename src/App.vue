@@ -1,13 +1,15 @@
 <template>
-  <article class="bg-lightGrey w-full h-screen flex justify-center items-center">
+  <section
+    class="bg-offWhite w-full h-screen flex flex-col justify-center items-center"
+  >
     <div
-      class="bg-white absolute top-24 rounded-br-[100px] rounded-t-[20px] rounded-bl-[20px] flex flex-col border border-white items-center mx-2 w-full w-96 sm:w-3/5 lg:w-2/5"
+      class="bg-white rounded-br-[100px] rounded-t-[20px] rounded-bl-[20px] flex flex-col border border-white items-center mx-2 w-5/6 sm:w-3/5 lg:w-2/5 lg:rounded-br-[150px]"
     >
       <form
         @submit.prevent="handleSubmit"
         class="flex flex-col justify-center w-full py-5 px-3"
       >
-        <div class="flex my-3 mx-4 w-full sm:w-96 lg:w-4/5">
+        <div class="flex my-3 mx-4 w-full sm:w-96 md:w-full">
           <div class="flex flex-col">
             <label
               htmlFor="day"
@@ -96,40 +98,47 @@
           />
         </div>
       </form>
-      <div
-        class="w-full h-full flex flex-col px-4 pb-8 text-4xl italic sm:text-5xl md:text-6xl"
-      >
-        <div class="text-offBlack font-bold font-poppinsExtraBold">
-          <span class="text-purple">{{ answerYear ? answerYear : "_ _" }}</span>
+      <div class="w-full h-full flex flex-col px-4 pb-8 italic">
+        <div
+          class="flex my-2 text-offBlack font-bold font-poppinsExtraBold text-5xl sm:text-5xl md:text-6xl"
+        >
+          <span class="text-purple mr-2"> {{ answerYear }}</span>
           years
         </div>
-        <div class="text-offBlack font-bold">
-          <span class="text-purple">{{
-            answerMonth ? answerMonth : "_ _"
-          }}</span>
+        <div
+          class="flex my-2 text-offBlack font-bold font-poppinsExtraBold text-5xl sm:text-5xl md:text-6xl"
+        >
+          <span class="text-purple mr-2">{{ answerMonth }}</span>
           months
         </div>
-        <div class="text-offBlack font-bold">
-          <span class="text-purple">{{ answerDay ? answerDay : "_ _" }}</span>
+        <div
+          class="flex text-offBlack font-bold font-poppinsExtraBold text-5xl sm:text-5xl md:text-6xl"
+        >
+          <span class="text-purple mr-2">{{ answerDay }}</span>
           days
         </div>
       </div>
-      <div class="text-center text-xs text-purple my-5">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class=" text-offBlack hover:underline">
-          Frontend Mentor.
-        </a>
-        <br class="block md:hidden"> Coded by
-        <a
-          href="https://www.linkedin.com/in/mikiyas-kebede-b661aa225/"
-          target="_blank"
-          class="text-offBlack hover:underline"
-        >
-          Mikiyas Kebede
-        </a>
-      </div>
     </div>
-  </article>
+    <div class="text-center text-xs text-purple my-5">
+      Challenge by
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        class="text-offBlack hover:underline"
+      >
+        Frontend Mentor.
+      </a>
+      <br class="block md:hidden" />
+      Coded by
+      <a
+        href="https://www.linkedin.com/in/mikiyas-kebede-b661aa225/"
+        target="_blank"
+        class="text-offBlack hover:underline"
+      >
+        Mikiyas Kebede
+      </a>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -137,13 +146,12 @@ import { reactive, ref, toRefs } from "vue";
 export default {
   setup() {
     const date = new Date();
-    console.log(date.getDate());
     const inputBorder = ref(
-      "border text-offBlack font-bold outline-0  px-2 w-2/3 h-8 rounded-md focus:border-purple focus:outline-none outline-none lg:py-5 lg:mt-2"
+      "border text-offBlack  text-sm font-bold outline-0  px-1 w-2/3 h-8 rounded-md focus:border-purple focus:outline-none outline-none lg:py-5 lg:px-2 lg:mt-2  md:text-lg"
     );
     const inputErrorBorder = ref("border-lightRed");
     const labelText = ref(
-      "uppercase text-xs tracking-widest font-bold sm:text-md"
+      "uppercase text-xs tracking-widest font-bold sm:text-md lg:text-lg"
     );
     const labelErrorText = ref("text-lightRed");
     //for errors
@@ -161,18 +169,16 @@ export default {
 
     //for output
     const answer = reactive({
-      answerDay: "",
-      answerMonth: "",
-      answerYear: "",
+      answerDay: "- -",
+      answerMonth: "- -",
+      answerYear: "- -",
     });
 
     //handle Submit
     const handleSubmit = () => {
       if (validateForm()) {
-        console.log("No submitted");
       } else {
         calculateAge();
-        console.log("form submitted");
       }
     };
 
@@ -280,11 +286,14 @@ export default {
       //calculate the year
       if (parseInt(formValues.year) > date.getFullYear()) {
         answer.answerYear = (
-          parseInt(formValues.year) - date.getFullYear()
+          parseInt(formValues.year) -
+          (date.getFullYear() - 1)
         ).toString();
       } else {
         answer.answerYear = (
-          date.getFullYear() - parseInt(formValues.year)
+          date.getFullYear() -
+          1 -
+          parseInt(formValues.year)
         ).toString();
       }
     };
